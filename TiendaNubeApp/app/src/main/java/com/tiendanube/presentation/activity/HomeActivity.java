@@ -12,6 +12,7 @@ public class HomeActivity extends GenericActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    public AnimalsFragmentAdapter animalsFragmentAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,10 +20,10 @@ public class HomeActivity extends GenericActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
         viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(new AnimalsFragmentAdapter(getSupportFragmentManager(), this));
+        animalsFragmentAdapter = new AnimalsFragmentAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(animalsFragmentAdapter);
 
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-        new DogServiceAsyncTask(this).execute();
     }
 }

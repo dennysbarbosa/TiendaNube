@@ -21,6 +21,7 @@ public class SplashScreenActivity extends GenericActivity implements Runnable {
     @Override
     public void run() {
 
+        finish();
         startActivity(new Intent(this, HomeActivity.class));
     }
 }

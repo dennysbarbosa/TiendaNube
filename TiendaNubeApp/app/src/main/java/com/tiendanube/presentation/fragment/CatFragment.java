@@ -33,7 +33,7 @@ public class CatFragment extends Fragment {
     private void initViews(){
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        CommonAdapter commonAdapter = new CommonAdapter();
+        CommonAdapter commonAdapter = new CommonAdapter(null);
         recyclerView.setHasFixedSize(true);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);

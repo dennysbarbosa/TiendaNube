@@ -9,29 +9,21 @@ public class DogModel {
     @SerializedName("id")
     public String id;
 
-    @SerializedName("name")
-    public String name;
-
-    @SerializedName("temperament")
-    public String temperament;
-
     @SerializedName("url")
     public String imageUrl;
 
+    @SerializedName("breeds")
+    List<BreedModel> listBreesds;
+
     public String getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getTemperament() {
-        return temperament;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
+    public List<BreedModel> getListBreesds() {
+        return listBreesds;
+    }
 }

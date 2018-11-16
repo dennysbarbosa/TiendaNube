@@ -9,6 +9,8 @@ import com.google.gson.reflect.TypeToken;
 import com.tiendanube.TiendaNubeApplication;
 import com.tiendanube.model.DogModel;
 import com.tiendanube.presentation.activity.GenericActivity;
+import com.tiendanube.presentation.activity.HomeActivity;
+import com.tiendanube.presentation.fragment.DogFragment;
 import retrofit2.Response;
 
 
@@ -18,8 +20,14 @@ import java.util.List;
 
 public class DogServiceAsyncTask extends BaseAsyncTask<Void, Void, JsonArray> {
 
-    public DogServiceAsyncTask(Context context) {
+    private HomeActivity homeActivity;
+    private int page;
+
+    public DogServiceAsyncTask(Context context, int page) {
+
         super(context);
+        this.homeActivity = ((HomeActivity) context);
+        this.page = page;
     }
 
     @Override
@@ -27,11 +35,12 @@ public class DogServiceAsyncTask extends BaseAsyncTask<Void, Void, JsonArray> {
 
         Response<JsonArray> response = null;
         try {
-            response = ((GenericActivity) context).application.getServicesAnimals().getDogs().execute();
+            response = homeActivity.application.getServicesAnimals().getDogs(page).execute();
         } catch (IOException e) {
             e.printStackTrace();
+            cancel(true);
         }
-        return response.body();
+        return response.body() != null ? response.body(): null;
     }
 
     @Override
@@ -42,7 +51,8 @@ public class DogServiceAsyncTask extends BaseAsyncTask<Void, Void, JsonArray> {
 
             String jsonOutput = jsonElements.toString();
             Type listType = new TypeToken<List<DogModel>>() {}.getType();
-            List<DogModel> posts = new Gson().fromJson(jsonOutput, listType);
+            DogFragment dogFragment = (DogFragment) homeActivity.animalsFragmentAdapter.getItem(0);
+            dogFragment.processFinish(new Gson().fromJson(jsonOutput, listType));
         }
 
     }
