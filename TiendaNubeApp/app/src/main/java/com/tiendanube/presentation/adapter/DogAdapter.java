@@ -8,43 +8,39 @@ import android.view.ViewGroup;
 import com.squareup.picasso.Picasso;
 import com.tiendanube.R;
 import com.tiendanube.model.DogModel;
-import com.tiendanube.presentation.holder.CommonViewHolder;
+import com.tiendanube.presentation.holder.DogViewHolder;
 
 import java.util.List;
 
-public class CommonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DogAdapter extends RecyclerView.Adapter<DogViewHolder> {
 
-    private static final int ID_CAT = 0;
-    private static final int ID_DOG = 1;
     private View view;
     public List<DogModel> listDog;
 
-    public CommonAdapter(List<DogModel> listDog) {
+    public DogAdapter(List<DogModel> listDog) {
         this.listDog = listDog;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null);
-        return new CommonViewHolder(view);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_dog, null);
+        return new DogViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
 
-        CommonViewHolder commonViewHolder = (CommonViewHolder) holder;
-
-        Picasso.with(view.getRootView().getContext()).load(listDog.get(position).getImageUrl()).into(commonViewHolder.imageView);
+        Picasso.with(view.getRootView().getContext()).load(listDog.get(position).getImageUrl()).into(holder.imageView);
         String name = listDog.get(position).getListBreesds().get(0).name != null ? listDog.get(position).getListBreesds().get(0).name : "";
-        commonViewHolder.txtName.setText(name);
+        holder.txtName.setText(name);
         String temperament = listDog.get(position).getListBreesds().get(0).temperament != null ? listDog.get(position).getListBreesds().get(0).temperament : "";
 
         if(!temperament.isEmpty()) {
-            commonViewHolder.txtTemperament.setText(temperament);
+            holder.txtTemperament.setText(temperament);
         }else{
-            commonViewHolder.txtTemperament.setVisibility(View.GONE);
+            holder.txtTemperament.setVisibility(View.GONE);
         }
     }
 

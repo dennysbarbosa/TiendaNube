@@ -19,8 +19,8 @@ public class AnimalsFragmentAdapter extends FragmentPagerAdapter {
 
         super(fm);
         this.context = context;
-        titles = new Integer[]{R.string.title_dogs, R.string.title_cats};
-        fragments = new Fragment[]{new DogFragment(), new CatFragment()};
+        titles = new Integer[]{ R.string.title_cats, R.string.title_dogs};
+        fragments = new Fragment[]{new CatFragment(), new DogFragment()};
     }
 
     @Nullable

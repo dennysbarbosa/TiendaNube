@@ -14,7 +14,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "API_URL", '"https://api.thedogapi.com/v1/"'
+        //endpoints
+        buildConfigField "String", "API_URL_CAT", '"https://api.thecatapi.com/v1/"'
+        buildConfigField "String", "API_URL_DOG", '"https://api.thedogapi.com/v1/"'
+        // api key
         buildConfigField "String", "API_KEY", '"dbfc2f81-c79b-4a13-97ab-545e7b971d40"'
     }
 
@@ -27,14 +30,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
+    // images libs
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
+    // recycler view scroll lib
+    implementation 'com.github.pwittchen:infinitescroll:0.0.1'
+    // requests libs
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

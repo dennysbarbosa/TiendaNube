@@ -4,7 +4,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <Button android:id="@+id/btn_try_again_cat"
+    <Button android:id="@+id/btn_try_again_dog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -19,13 +19,15 @@
 
     <android.support.v7.widget.RecyclerView
 
-            android:id="@+id/recycler_view_cat"
+            android:id="@+id/recycler_view_dog"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_above="@id/progress_dog"/>
 
-    <ProgressBar android:id="@+id/progress_cat"
+    <ProgressBar android:id="@+id/progress_dog"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_centerHorizontal="true"
-                 android:layout_centerVertical="true" />
+                 android:layout_alignParentBottom="true"/>
+
 </RelativeLayout>

@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import com.tiendanube.R;
 
+/*
+ * Classe inicial com tempo de 1.500 milisegundos de exibicao.
+ */
 public class SplashScreenActivity extends GenericActivity implements Runnable {
 
 

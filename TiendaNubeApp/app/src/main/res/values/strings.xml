@@ -7,6 +7,9 @@
     <string name="title_cats">Cats</string>
     <string name="title_dogs">Dogs</string>
 
+    <!-- Fragment Dog -->
+    <string name="fragment_dog_maximum_itens">Máximo de itens permitidos: 50</string>
+
     <!--ERROR-->
     <string name="fail_internet">Falha de conexão, verifique sua configuraçoōes de rede!</string>
 

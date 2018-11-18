@@ -6,12 +6,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import com.tiendanube.R;
 import com.tiendanube.presentation.adapter.AnimalsFragmentAdapter;
-import com.tiendanube.service.DogServiceAsyncTask;
+
+/*
+ * Classe principal com componente View Page associado a intancia da classe AnimalsFragmentAdapter,
+ * classe que possui dois fragmentos (CatFragment e DogFragment).
+ */
 
 public class HomeActivity extends GenericActivity {
 
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
     public AnimalsFragmentAdapter animalsFragmentAdapter;
 
     @Override
@@ -19,11 +21,15 @@ public class HomeActivity extends GenericActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-        viewPager = findViewById(R.id.view_pager);
-        animalsFragmentAdapter = new AnimalsFragmentAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(animalsFragmentAdapter);
-
-        tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.setupWithViewPager(viewPager);
+        initViews();
     }
+
+    private void initViews(){
+
+        animalsFragmentAdapter = new AnimalsFragmentAdapter(getSupportFragmentManager(), this);
+        ViewPager viewPager =  findViewById(R.id.view_pager);
+        viewPager.setAdapter(animalsFragmentAdapter);
+        ((TabLayout) findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
+    }
+
 }

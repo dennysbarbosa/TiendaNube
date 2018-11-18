@@ -21,6 +21,9 @@ public class RetrofitConnection {
 
     }
 
+    /*
+     * Configura request e apresenta log de status.
+     */
     public Retrofit connection(String url){
 
         OkHttpClient client = new OkHttpClient.Builder()
